@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>California House Price Predictor</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🏠 California House Price Predictor</h1>
+
+    <p class="subtitle">
+        Predict California House Prices using Machine Learning
+    </p>
+
+    <div class="main-content">
+
+        <!-- Left Section -->
+        <div class="form-section">
+
+            <form action="/predict" method="POST">
+
+                <div class="input-group">
+                    <label>Median Income</label>
+                    <input type="number" step="any" name="MedInc" placeholder="Example: 8.3" required>
+                </div>
+
+                <div class="input-group">
+                    <label>House Age</label>
+                    <input type="number" step="any" name="HouseAge" placeholder="Example: 20" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Average Rooms</label>
+                    <input type="number" step="any" name="AveRooms" placeholder="Example: 6.5" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Average Bedrooms</label>
+                    <input type="number" step="any" name="AveBedrms" placeholder="Example: 1.2" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Population</label>
+                    <input type="number" step="any" name="Population" placeholder="Example: 1200" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Average Occupancy</label>
+                    <input type="number" step="any" name="AveOccup" placeholder="Example: 3.2" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Latitude</label>
+                    <input type="number" step="any" name="Latitude" placeholder="Example: 37.88" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Longitude</label>
+                    <input type="number" step="any" name="Longitude" placeholder="Example: -122.23" required>
+                </div>
+
+                <button type="submit">Predict House Price</button>
+
+            </form>
+
+        </div>
+
+        <!-- Right Section -->
+        <div class="result-section">
+
+            <h2>🏡 Prediction Result</h2>
+
+            {% if prediction %}
+
+            <div class="result-box">
+
+                <h3>{{ prediction }}</h3>
+
+                <p>The estimated price based on your inputs.</p>
+
+            </div>
+
+            {% else %}
+
+            <div class="result-box">
+
+                <h3>Waiting...</h3>
+
+                <p>Fill the form and click Predict.</p>
+
+            </div>
+
+            {% endif %}
+
+            <hr>
+
+            <div class="info">
+
+                <h3>Project Details</h3>
+
+                <p><strong>Model:</strong> Linear Regression</p>
+
+                <p><strong>Dataset:</strong> California Housing Dataset</p>
+
+                <p><strong>Features:</strong> 8 Input Features</p>
+
+                <p><strong>Backend:</strong> Flask (Python)</p>
+
+                <p><strong>Frontend:</strong> HTML & CSS</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
